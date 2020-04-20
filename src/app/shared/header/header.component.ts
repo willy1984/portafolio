@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { InfoPaginaService } from '../../services/info-pagina.service';
+import { InfoPagina } from 'src/app/interfaces/info-pagina.interface';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  infoPagina: InfoPagina;
 
-  ngOnInit(): void {
+  constructor(private infoPaginaService: InfoPaginaService) {
+  }
+
+  ngOnInit() {
+    setTimeout(() =>{
+       this.infoPagina = this.infoPaginaService.info;
+    });
   }
 
 }
