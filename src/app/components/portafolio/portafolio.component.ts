@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Producto } from 'src/app/interfaces/producto.interface';
+import { ProductosService } from '../../services/productos.service';
 
 @Component({
   selector: 'app-portafolio',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PortafolioComponent implements OnInit {
 
-  constructor() { }
+  cargando = true;
+  productos: Producto[] = [];
 
-  ngOnInit(): void {
+  constructor(private productosService: ProductosService) {
+    this.obtenerProductos();
+  }
+
+  ngOnInit() {
+  }
+
+  obtenerProductos() {
+    this.productosService.obtenerProductos().subscribe((respuestaProductos: Producto[]) => {
+      this.productos = respuestaProductos;
+      this.cargando = false;
+    });
   }
 
 }
