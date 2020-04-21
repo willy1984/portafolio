@@ -17,7 +17,6 @@ export class FooterComponent implements OnInit {
   ngOnInit() {
     setTimeout(() => {
       this.infoPagina = this.infoPaginaService.info;
-      console.log('object', this.infoPagina);
     });
   }
 
