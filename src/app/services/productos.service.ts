@@ -11,4 +11,8 @@ export class ProductosService {
   obtenerProductos() {
     return this.http.get('https://mispruebas-169f4.firebaseio.com/productos_idx.json');
   }
+
+  getProducto(id: string) {
+    return this.http.get(`https://mispruebas-169f4.firebaseio.com/productos/${id}.json`);
+  }
 }
